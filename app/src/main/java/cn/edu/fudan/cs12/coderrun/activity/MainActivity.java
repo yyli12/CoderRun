@@ -1,16 +1,49 @@
-package cn.edu.fudan.cs12.coderrun;
+package cn.edu.fudan.cs12.coderrun.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import butterknife.ButterKnife;
+import butterknife.Bind;
+import cn.edu.fudan.cs12.coderrun.R;
+import cn.edu.fudan.cs12.coderrun.entity.User;
 
 public class MainActivity extends AppCompatActivity {
+
+	// UI references.
+	@Bind(R.id.button_main) Button mMainButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ButterKnife.bind(this);
+
+		User.logOut();
+		if (User.getCurrentUser() != null) {
+			mMainButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(MainActivity.this, FunctionActivity.class);
+					startActivity(intent);
+				}
+			});
+		} else {
+			mMainButton.setText(getString(R.string.button_main_login));
+			mMainButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+					startActivity(intent);
+				}
+			});
+		}
+
 	}
 
 	@Override
