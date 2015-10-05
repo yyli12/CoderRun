@@ -4,6 +4,7 @@
 	<!-- Strings related to login -->
 	<string name="prompt_mobile">手机</string>
 	<string name="prompt_password">密码</string>
+	<string name="prompt_sms">验证码</string>
 	<string name="action_login">密码登录</string>
 	<string name="action_signUp">验证码登录/注册</string>
 	<string name="plus_sign_out">Switch Google+ account</string>

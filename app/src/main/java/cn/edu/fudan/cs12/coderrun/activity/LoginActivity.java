@@ -18,11 +18,13 @@ import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -77,26 +79,6 @@ public class LoginActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		ButterKnife.bind(this);
-
-		mSmsCodeInput = new EditText(this);
-
-		smsCodeDialog = new AlertDialog.Builder(this)
-				.setTitle("输入验证码")
-				.setView(mSmsCodeInput)
-				.setPositiveButton("登录", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						attemptWithSmsCode();
-					}
-				})
-				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						smsCodeDialog.dismiss();
-					}
-				})
-				.create();
-
 	}
 
 	@Override
@@ -159,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
 	@Subscribe
 	public void afterRequireSms(SmsEvent event) {
 		if (event.code == Config.SUCCESS) {
-			smsCodeDialog.show();
+			showSmsCodeDialog();
 		} else {
 			mLoginError.setText(event.errorMessage);
 		}
@@ -173,6 +155,11 @@ public class LoginActivity extends AppCompatActivity {
 			LoginActivity.this.finish();
 		} else {
 			mLoginError.setText(event.errorMessage);
+			new Handler().postDelayed(new Runnable() {
+				public void run() {
+					showSmsCodeDialog();
+				}
+			}, 1000);
 		}
 	}
 
@@ -186,6 +173,28 @@ public class LoginActivity extends AppCompatActivity {
 		String smsCode = mSmsCodeInput.getText().toString();
 		String mobile = mMobileInput.getText().toString();
 		UserAction.signUpOrLoginWithSMSCode(mobile, smsCode);
+	}
+
+	private void showSmsCodeDialog() {
+		LayoutInflater inflater = getLayoutInflater();
+		mSmsCodeInput = (EditText) inflater.inflate(R.layout.component_smscode_input, null);
+		smsCodeDialog = new AlertDialog.Builder(this)
+				.setTitle("输入验证码")
+				.setView(mSmsCodeInput)
+				.setPositiveButton("登录", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						attemptWithSmsCode();
+					}
+				})
+				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						smsCodeDialog.dismiss();
+					}
+				})
+				.create();
+		smsCodeDialog.show();
 	}
 }
 
