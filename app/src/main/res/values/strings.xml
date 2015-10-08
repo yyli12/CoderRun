@@ -6,6 +6,7 @@
 	<string name="title_login">Join to Run!</string>
 	<string name="button_main">跑！</string>
 	<string name="button_main_login">登陆/注册</string>
+	<string name="button_logout">退出账号</string>
 	<string name="title_activity_function">FunctionActivity</string>
 
 
