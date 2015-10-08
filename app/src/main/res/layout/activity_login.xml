@@ -21,77 +21,84 @@
 		android:layout_marginBottom="8dp"
 		android:visibility="gone"/>
 
-	<LinearLayout
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
-
-		<ImageView
-			android:layout_width="168dp"
-			android:layout_height="167dp"
-			android:id="@+id/imageView"
-			android:src="@mipmap/ic_logo"
-			android:layout_gravity="center_horizontal"/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/title_login"
-			android:id="@+id/textView"
-			android:layout_gravity="center_horizontal"
-			android:textSize="50sp"/>
+		android:layout_height="match_parent"
+		android:id="@+id/scrollView">
 
 		<LinearLayout
-			android:id="@+id/email_login_form"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:orientation="vertical">
 
-			<AutoCompleteTextView
-				android:id="@+id/input_mobile"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:hint="@string/prompt_mobile"
-				android:maxLines="1"
-				android:singleLine="true"
-				android:inputType="phone"/>
-
-			<EditText
-				android:id="@+id/input_password"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:hint="@string/prompt_password"
-				android:inputType="textPassword"
-				android:maxLines="1"
-				android:singleLine="true"/>
+			<ImageView
+				android:layout_width="168dp"
+				android:layout_height="167dp"
+				android:id="@+id/imageView"
+				android:src="@mipmap/ic_logo"
+				android:layout_gravity="center_horizontal"/>
 
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@+id/login_error"/>
+				android:text="@string/title_login"
+				android:id="@+id/textView"
+				android:layout_gravity="center_horizontal"
+				android:textSize="50sp"/>
 
 			<LinearLayout
-				android:orientation="horizontal"
+				android:id="@+id/email_login_form"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent">
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
 
-				<Button
+				<AutoCompleteTextView
+					android:id="@+id/input_mobile"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="@string/action_login"
-					android:id="@+id/action_button_login"
-					android:layout_weight="1"/>
+					android:hint="@string/prompt_mobile"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:inputType="phone"/>
 
-				<Button
+				<EditText
+					android:id="@+id/input_password"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="@string/action_signUp"
-					android:id="@+id/action_button_signup"
-					android:layout_weight="1"/>
+					android:hint="@string/prompt_password"
+					android:inputType="textPassword"
+					android:maxLines="1"
+					android:singleLine="true"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/login_error"/>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+					<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/action_login"
+						android:id="@+id/action_button_login"
+						android:layout_weight="1"/>
+
+					<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/action_signUp"
+						android:id="@+id/action_button_signup"
+						android:layout_weight="1"/>
+
+				</LinearLayout>
 
 			</LinearLayout>
-
 		</LinearLayout>
-	</LinearLayout>
+	</ScrollView>
+
 </LinearLayout>
 

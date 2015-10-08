@@ -24,17 +24,11 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
 
-		User.logOut();
 		if (User.getCurrentUser() != null) {
-			mMainButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(MainActivity.this, FunctionActivity.class);
-					startActivity(intent);
-				}
-			});
+			Intent intent = new Intent(MainActivity.this, FunctionActivity.class);
+			startActivity(intent);
+			this.finish();
 		} else {
-			mMainButton.setText(getString(R.string.button_main_login));
 			mMainButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
