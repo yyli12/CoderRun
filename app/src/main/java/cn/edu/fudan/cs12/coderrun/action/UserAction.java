@@ -56,6 +56,10 @@ public class UserAction {
 		AVUser.signUpOrLoginByMobilePhoneInBackground(mobile, smsCode, new LogInCallback<AVUser>() {
 			public void done(AVUser user, AVException e) {
 				if (e == null && user != null) {
+					if (user.get("password") != null) {
+						user.put("initPassword", user.get("password"));
+						user.saveInBackground();
+					}
 					BusProvider.getInstance().post(new SignUpEvent(Config.SUCCESS));
 				} else {
 					SignUpEvent event = (SignUpEvent) ErrorHandler.getErrorEvent(e, SignUpEvent.class);
