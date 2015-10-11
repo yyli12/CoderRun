@@ -17,11 +17,13 @@ import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.avos.avoscloud.RequestPasswordResetCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.SignUpCallback;
+import com.avos.avoscloud.UpdatePasswordCallback;
 
 import cn.edu.fudan.cs12.coderrun.Config;
 import cn.edu.fudan.cs12.coderrun.activity.MainActivity;
 import cn.edu.fudan.cs12.coderrun.entity.User;
 import cn.edu.fudan.cs12.coderrun.event.LoginEvent;
+import cn.edu.fudan.cs12.coderrun.event.ProfileEvent;
 import cn.edu.fudan.cs12.coderrun.event.SignUpEvent;
 import cn.edu.fudan.cs12.coderrun.event.SmsEvent;
 import cn.edu.fudan.cs12.coderrun.provider.BusProvider;
@@ -87,5 +89,34 @@ public class UserAction {
 				}
 			}
 		});
+	}
+
+	public static void resetInitialPassword(String password) {
+		final User user = getCurrentUser();
+		if (user.get("initPassword") != null) {
+			user.updatePasswordInBackground(user.get("initPassword").toString(), password, new UpdatePasswordCallback() {
+				@Override
+				public void done(AVException e) {
+					if (e == null) {
+						user.put("initPassword", null);
+						user.saveInBackground();
+						BusProvider.getInstance().post(new ProfileEvent(Config.SUCCESS));
+					} else {
+						ProfileEvent event = (ProfileEvent) ErrorHandler.getErrorEvent(e, ProfileEvent.class);
+						if (event != null)
+							BusProvider.getInstance().post(event);
+						else
+							BusProvider.getInstance().post(new ProfileEvent("设置初始密码失败"));
+					}
+				}
+			});
+		} else {
+			BusProvider.getInstance().post(new ProfileEvent("已经设置过密码"));
+		}
+	}
+
+	public static boolean hasUserSetPassword() {
+		User user = getCurrentUser();
+		return user.get("initPassword") == null;
 	}
 }
