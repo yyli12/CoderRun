@@ -72,7 +72,6 @@ public class HistoryListAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		System.out.println(item.toString());
 		holder.position.setText(Integer.toString(position));
 		holder.begin_end.setText(item.getInt("finish_time") + " " + item.getInt("running_time"));
 		String spped = new DecimalFormat("#.00").format(item.getInt("running_time") / item.getDouble("running_distance"));
