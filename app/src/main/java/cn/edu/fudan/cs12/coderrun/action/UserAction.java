@@ -37,6 +37,10 @@ public class UserAction {
 		return AVUser.getCurrentUser(User.class);
 	}
 
+	public static void logout() {
+		AVUser.logOut();
+	}
+
 	public static void getRegSMSCode(String mobile) {
 		System.out.println(mobile);
 		AVOSCloud.requestSMSCodeInBackground(mobile, new RequestMobileCodeCallback() {
