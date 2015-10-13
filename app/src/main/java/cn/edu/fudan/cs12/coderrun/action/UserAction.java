@@ -19,9 +19,13 @@ import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.SignUpCallback;
 import com.avos.avoscloud.UpdatePasswordCallback;
 
+import java.util.List;
+
 import cn.edu.fudan.cs12.coderrun.Config;
 import cn.edu.fudan.cs12.coderrun.activity.MainActivity;
+import cn.edu.fudan.cs12.coderrun.adapter.HistoryListAdapter;
 import cn.edu.fudan.cs12.coderrun.entity.User;
+import cn.edu.fudan.cs12.coderrun.event.DataEvent;
 import cn.edu.fudan.cs12.coderrun.event.LoginEvent;
 import cn.edu.fudan.cs12.coderrun.event.ProfileEvent;
 import cn.edu.fudan.cs12.coderrun.event.SignUpEvent;
@@ -122,5 +126,27 @@ public class UserAction {
 	public static boolean hasUserSetPassword() {
 		User user = getCurrentUser();
 		return user.get("initPassword") == null;
+	}
+
+	public static void userHistoryList(final HistoryListAdapter a) {
+		User user = getCurrentUser();
+		AVQuery<AVObject> query = new AVQuery<AVObject>("history_run");
+		query.whereEqualTo("user", user);
+		query.findInBackground(new FindCallback<AVObject>() {
+			@Override
+			public void done(List<AVObject> list, AVException e) {
+				if (e == null) {
+					a.allHistory = list;
+					BusProvider.getInstance().post(new DataEvent(Config.SUCCESS, DataEvent.type.history_item));
+				} else {
+					DataEvent event = (DataEvent) ErrorHandler.getErrorEvent(e, DataEvent.class);
+					if (event != null) {
+						event = new DataEvent("获取历史记录失败", DataEvent.type.history_item);
+					}
+					event.dataType = DataEvent.type.history_item;
+					BusProvider.getInstance().post(event);
+				}
+			}
+		});
 	}
 }

@@ -2,12 +2,20 @@ package cn.edu.fudan.cs12.coderrun.entity;
 
 import android.text.TextUtils;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
 
 import java.io.IOException;
+import java.util.List;
 
 import cn.edu.fudan.cs12.coderrun.Config;
+import cn.edu.fudan.cs12.coderrun.event.DataEvent;
+import cn.edu.fudan.cs12.coderrun.event.SignUpEvent;
+import cn.edu.fudan.cs12.coderrun.provider.BusProvider;
 
 
 /**

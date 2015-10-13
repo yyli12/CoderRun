@@ -11,6 +11,7 @@ import android.widget.Button;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 import cn.edu.fudan.cs12.coderrun.R;
+import cn.edu.fudan.cs12.coderrun.action.UserAction;
 import cn.edu.fudan.cs12.coderrun.entity.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
 
-		if (User.getCurrentUser() != null) {
+		if (UserAction.getCurrentUser() != null) {
 			Intent intent = new Intent(MainActivity.this, MyNavigationDrawer.class);
 			startActivity(intent);
 			this.finish();

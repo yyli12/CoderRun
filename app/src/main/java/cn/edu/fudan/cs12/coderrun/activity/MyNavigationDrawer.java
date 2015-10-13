@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import cn.edu.fudan.cs12.coderrun.R;
 import cn.edu.fudan.cs12.coderrun.action.UserAction;
 import cn.edu.fudan.cs12.coderrun.entity.User;
+import cn.edu.fudan.cs12.coderrun.fragment.HistoryItemFragment;
 import cn.edu.fudan.cs12.coderrun.fragment.UserFragment;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
@@ -31,9 +32,6 @@ import it.neokree.materialnavigationdrawer.elements.listeners.MaterialSectionLis
  */
 public class MyNavigationDrawer extends MaterialNavigationDrawer {
 	MaterialAccount account;
-	Fragment f1;
-	Fragment f2;
-	Fragment f3;
 	String userName;
 	String userMail;
 
@@ -50,15 +48,10 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		Bundle params = new Bundle();
 		params.putString("fields", "cover");
 
-		f1 = new UserFragment();
-		f2 = new UserFragment();
-		f3 = new UserFragment();
-		
-
 		// create sections
-		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, f1).setSectionColor(Color.parseColor("#9c27b0")));
-		this.addSection(newSection("历史记录", R.drawable.ic_history, f2).setSectionColor(Color.parseColor("#9c27b0")));
-		this.addSection(newSection("我的账号", R.drawable.ic_profile, f2).setSectionColor(Color.parseColor("#9c27b0")));
+		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new UserFragment()).setSectionColor(Color.parseColor("#9c27b0")));
+		this.addSection(newSection("历史记录", R.drawable.ic_history, new HistoryItemFragment()).setSectionColor(Color.parseColor("#9c27b0")));
+		this.addSection(newSection("我的账号", R.drawable.ic_profile, new UserFragment()).setSectionColor(Color.parseColor("#9c27b0")));
 
 		// create bottom section
 		this.addBottomSection(newSection("退出账号", R.drawable.ic_logout, new MaterialSectionListener() {
@@ -78,6 +71,10 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		}));
 
 		setBackPattern(MaterialNavigationDrawer.BACKPATTERN_BACK_TO_FIRST);
+	}
+
+	public void onFragmentInteraction(String id) {
+
 	}
 
 }
