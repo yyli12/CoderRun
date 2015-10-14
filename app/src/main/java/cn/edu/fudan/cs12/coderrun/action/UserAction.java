@@ -132,6 +132,7 @@ public class UserAction {
 		User user = getCurrentUser();
 		AVQuery<AVObject> query = new AVQuery<AVObject>("history_run");
 		query.whereEqualTo("user", user);
+		query.orderByDescending("finish_time");
 		query.findInBackground(new FindCallback<AVObject>() {
 			@Override
 			public void done(List<AVObject> list, AVException e) {

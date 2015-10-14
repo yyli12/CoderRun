@@ -13,6 +13,8 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import cn.edu.fudan.cs12.coderrun.R;
@@ -66,17 +68,24 @@ public class HistoryListAdapter extends BaseAdapter {
 			holder.position = (TextView) convertView.findViewById(R.id.history_item_position);
 			holder.begin_end = (TextView) convertView.findViewById(R.id.history_item_begin_end);
 			holder.speed = (TextView) convertView.findViewById(R.id.history_item_speed);
-			holder.distance = (TextView) convertView.findViewById(R.id.history_item_begin_end);
+			holder.distance = (TextView) convertView.findViewById(R.id.history_item_total_distance);
+			holder.location = (TextView) convertView.findViewById(R.id.history_item_location);
 			holder.score = (RatingBar) convertView.findViewById(R.id.history_item_ratingBar);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.position.setText(Integer.toString(position));
-		holder.begin_end.setText(item.getInt("finish_time") + " " + item.getInt("running_time"));
-		String spped = new DecimalFormat("#.00").format(item.getInt("running_time") / item.getDouble("running_distance"));
-		holder.speed.setText(spped + " min/km");
+		SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
+		String end = format.format(item.getInt("finish_time") * 1000L);
+		String begin = format.format(item.getInt("finish_time") * 1000L - item.getInt("running_time") * 60 * 1000L);
+		holder.begin_end.setText(begin + " ~ " + end);
+		String spped = new DecimalFormat("#.0").format(item.getInt("running_time") / item.getDouble("running_distance"));
+		holder.speed.setText(spped);
 		holder.score.setRating(item.getInt("score"));
+		String loc = item.getString("location");
+		holder.location.setText(loc == null ? "" : loc);
+		holder.distance.setText(item.getDouble("running_distance") + "km");
 
 		return convertView;
 	}

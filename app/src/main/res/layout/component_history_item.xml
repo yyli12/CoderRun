@@ -2,59 +2,114 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:orientation="horizontal" >
+				android:orientation="horizontal"
+			  android:padding="5dp">
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="7"
-		android:id="@+id/history_item_position"
-		android:layout_alignParentStart="true"
-		android:layout_alignParentTop="true"
-		android:layout_gravity="center"
-		android:textColor="#191970"
-		android:textSize="30sp"
-		android:layout_weight="2"/><![CDATA[
-		android:layout_weight="1"/>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
 
-	]]>
-
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_weight="9">
-
-		<TextView
-			android:layout_width="wrap_content"
+		<FrameLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="2015-12-13 12:23"
-			android:id="@+id/history_item_begin_end"
-			android:layout_gravity="center"
-			android:textColor="#191970"
-			android:textSize="30sp" />
-			android:editable="false"
-			android:layout_weight="1"/>
+			android:layout_alignParentTop="true"
+			android:layout_alignParentStart="true">
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="7.3 min/km"
-			android:id="@+id/history_item_speed"
-			android:layout_gravity="center"
-			android:textColor="#800080"
-			android:textSize="30sp"
-			android:layout_weight="1"/>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/linearLayout"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentEnd="true"
+				android:layout_gravity="center_vertical|right">
 
-		<RatingBar
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/history_item_ratingBar"
-			android:numStars="5"
-			android:rating="4"
-			android:isIndicator="true"
-			android:layout_gravity="center"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="2015-12-13 12:23"
+					android:id="@+id/history_item_begin_end"
+					android:layout_gravity="center"
+					android:textColor="@color/gray_dark"
+					android:textSize="20sp" />
 
-	</LinearLayout>
+				<RatingBar
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:id="@+id/history_item_ratingBar"
+					android:numStars="5"
+					android:rating="4"
+					android:isIndicator="true"
+					android:layout_gravity="center"/>
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="8km"
+						android:id="@+id/history_item_total_distance"
+						android:textColor="@color/gray"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="New Text"
+						android:id="@+id/history_item_location"
+						android:textColor="@color/gray"
+						android:layout_alignParentTop="true"
+						android:layout_alignParentEnd="true"/>
+				</RelativeLayout>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="115dp"
+				android:text="7"
+				android:id="@+id/history_item_position"
+				android:textColor="@color/gray_light"
+				android:textSize="120dp"
+				android:textStyle="bold"
+
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentEnd="true"
+				android:alpha="0.8"
+				android:layout_gravity="left|bottom"
+				android:textIsSelectable="false"
+				android:layout_marginRight="20dp"/>
+
+			<RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="left|center_vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="7.3"
+					android:id="@+id/history_item_speed"
+					android:textColor="@color/primary_dark"
+					android:textSize="30sp"
+					android:layout_gravity="center"
+					android:layout_centerVertical="true"
+					android:layout_alignParentStart="true"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="min/km"
+					android:id="@+id/history_item_unit"
+					android:textColor="@color/primary_dark"
+					android:textSize="15sp"
+					android:layout_below="@+id/history_item_speed"
+					android:layout_toEndOf="@+id/history_item_speed"/>
+			</RelativeLayout>
+
+		</FrameLayout>
+
+	</RelativeLayout>
 
 </LinearLayout>
