@@ -3,4 +3,15 @@
 
 	<string name="hello_world">Hello world!</string>
 	<string name="action_settings">Settings</string>
+	<string name="title_login">Join to Run!</string>
+	<string name="button_main">跑！</string>
+	<string name="button_main_login">登陆/注册</string>
+	<string name="button_logout">退出账号</string>
+	<string name="title_activity_function">FunctionActivity</string>
+
+
+	<string name="title_sms">输入手机验证码</string>
+	<string name="sms_button_submit">提交</string>
+	<string name="sms_button_cancel">取消</string>
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
