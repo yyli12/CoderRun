@@ -59,6 +59,8 @@
 					android:hint="@string/prompt_mobile"
 					android:maxLines="1"
 					android:singleLine="true"
+					android:imeOptions="actionNext"
+					android:nextFocusForward="@+id/input_password"
 					android:inputType="phone"/>
 
 				<EditText

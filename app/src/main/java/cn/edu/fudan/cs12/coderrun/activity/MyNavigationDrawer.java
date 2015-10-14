@@ -69,8 +69,6 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 				}
 			}
 		}));
-
-		setBackPattern(MaterialNavigationDrawer.BACKPATTERN_BACK_TO_FIRST);
 	}
 
 	public void onFragmentInteraction(String id) {

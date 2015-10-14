@@ -3,6 +3,7 @@ package cn.edu.fudan.cs12.coderrun.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.ListFragment;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,11 @@ public class HistoryItemFragment extends ListFragment {
 	@Subscribe
 	public void updateListView(DataEvent e) {
 		if (adapter != null && e.isTypeEvent(DataEvent.type.history_item) && e.code == Config.SUCCESS) {
-			adapter.notifyDataSetChanged();
+			new Handler().postDelayed(new Runnable() {
+				public void run() {
+					adapter.notifyDataSetChanged();
+				}
+			}, 300);
 		} else {
 			// todo
 		}

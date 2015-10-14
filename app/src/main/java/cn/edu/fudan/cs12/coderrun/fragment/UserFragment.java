@@ -14,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.edu.fudan.cs12.coderrun.R;
+import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
 public class UserFragment extends Fragment {
 	int t;
@@ -45,6 +46,8 @@ public class UserFragment extends Fragment {
 
 	void test() {
 		t++;
+		MaterialNavigationDrawer drawer = (MaterialNavigationDrawer) this.getActivity();
+		drawer.setSection(drawer.getSectionAtCurrentPosition(1));
 		tv.setText(Integer.toString(t));
 	}
 
