@@ -81,4 +81,10 @@ public class User extends AVUser {
 	public void setIntro(String intro) {
 		put(INTRO_STRING, intro);
 	}
+
+	public boolean isPasswordSet() { return getString("initPassword").equals("-1"); }
+
+	public String getInitPassword() {
+		return getString("initPassword");
+	}
 }

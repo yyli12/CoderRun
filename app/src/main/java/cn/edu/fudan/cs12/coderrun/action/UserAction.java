@@ -46,7 +46,6 @@ public class UserAction {
 	}
 
 	public static void getRegSMSCode(String mobile) {
-		System.out.println(mobile);
 		AVOSCloud.requestSMSCodeInBackground(mobile, new RequestMobileCodeCallback() {
 			public void done(AVException e) {
 				if (e == null) {
@@ -99,33 +98,34 @@ public class UserAction {
 		});
 	}
 
-	public static void resetInitialPassword(String password) {
+	public static void resetInitialPassword(final String password) {
 		final User user = getCurrentUser();
-		if (user.get("initPassword") != null) {
+		final String mobile = user.getMobilePhoneNumber();
+		if (!user.isPasswordSet()) {
 			user.updatePasswordInBackground(user.get("initPassword").toString(), password, new UpdatePasswordCallback() {
 				@Override
 				public void done(AVException e) {
 					if (e == null) {
-						user.put("initPassword", null);
-						user.saveInBackground();
-						BusProvider.getInstance().post(new ProfileEvent(Config.SUCCESS));
+						User.logInInBackground(mobile, password, new LogInCallback<AVUser>() {
+							@Override
+							public void done(AVUser avUser, AVException e) {
+								avUser.put("initPassword", "-1");
+								avUser.saveInBackground();
+								BusProvider.getInstance().post(new ProfileEvent(Config.SUCCESS, ProfileEvent.type.reset_init_password));
+							}
+						});
 					} else {
 						ProfileEvent event = (ProfileEvent) ErrorHandler.getErrorEvent(e, ProfileEvent.class);
 						if (event != null)
 							BusProvider.getInstance().post(event);
 						else
-							BusProvider.getInstance().post(new ProfileEvent("设置初始密码失败"));
+							BusProvider.getInstance().post(new ProfileEvent("设置初始密码失败", ProfileEvent.type.reset_init_password));
 					}
 				}
 			});
 		} else {
-			BusProvider.getInstance().post(new ProfileEvent("已经设置过密码"));
+			BusProvider.getInstance().post(new ProfileEvent("已经设置过密码", ProfileEvent.type.reset_init_password));
 		}
-	}
-
-	public static boolean hasUserSetPassword() {
-		User user = getCurrentUser();
-		return user.get("initPassword") == null;
 	}
 
 	public static void userHistoryList(final HistoryListAdapter a) {

@@ -34,7 +34,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -70,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 	@Bind(R.id.action_button_signup) Button mSignupButton;
 	@Bind(R.id.login_progress) ProgressBar mProgressBar;
 	EditText mSmsCodeInput;
-	Dialog smsCodeDialog;
 
 
 
@@ -177,24 +180,24 @@ public class LoginActivity extends AppCompatActivity {
 
 	private void showSmsCodeDialog() {
 		LayoutInflater inflater = getLayoutInflater();
-		mSmsCodeInput = (EditText) inflater.inflate(R.layout.component_smscode_input, null);
-		smsCodeDialog = new AlertDialog.Builder(this)
-				.setTitle("输入验证码")
-				.setView(mSmsCodeInput)
-				.setPositiveButton("登录", new DialogInterface.OnClickListener() {
+		View v = inflater.inflate(R.layout.component_smscode_input, null);
+		mSmsCodeInput = (EditText) v.findViewById(R.id.input_sms);
+
+		MaterialDialog dialog = new MaterialDialog.Builder(this)
+				.title("输入验证码")
+				.contentColorRes(R.color.gray_dark)
+				.customView(v, false)
+				.positiveText("登录")
+				.positiveColorRes(R.color.primary)
+				.onPositive(new MaterialDialog.SingleButtonCallback() {
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
+					public void onClick(MaterialDialog materialDialog, DialogAction dialogAction) {
 						attemptWithSmsCode();
 					}
 				})
-				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						smsCodeDialog.dismiss();
-					}
-				})
-				.create();
-		smsCodeDialog.show();
+				.negativeText("取消")
+				.negativeColorRes(R.color.gray_light)
+				.show();
 	}
 }
 

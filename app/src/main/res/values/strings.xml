@@ -9,6 +9,13 @@
 	<string name="button_logout">退出账号</string>
 	<string name="title_activity_function">FunctionActivity</string>
 
+	<string name="title_init_password">初始密码：</string>
+	<string name="button_reset_init_password">设置密码</string>
+	<string name="dialog_title_reset_init_password">设置密码</string>
+	<string name="dialog_button_reset_init_password_submit">设置</string>
+	<string name="dialog_button_reset_init_password_cancel">取消</string>
+
+
 
 	<string name="title_sms">输入手机验证码</string>
 	<string name="sms_button_submit">提交</string>

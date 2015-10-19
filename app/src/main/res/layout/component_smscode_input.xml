@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EditText
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/input_sms"
-	android:layout_width="match_parent"
-	android:layout_height="50dp"
-	android:hint="@string/prompt_sms"
-	android:inputType="number"
-	android:maxLines="1"
-	android:maxLength="6"
-	android:singleLine="true"
-	android:layout_margin="20dp"
-	android:gravity="center"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+	<com.rengwuxian.materialedittext.MaterialEditText
+		android:id="@+id/input_sms"
+		android:ems="10"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/prompt_sms"
+		android:inputType="number"
+		android:maxLines="1"
+		android:maxLength="6"
+		android:singleLine="true"
+		android:elegantTextHeight="false"
+		android:gravity="center"
+		android:textColor="@color/gray"
+		android:textColorHint="@color/gray"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
+
+

@@ -2,10 +2,13 @@ package cn.edu.fudan.cs12.coderrun.activity;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,7 +45,8 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		userName = user.get("mobilePhoneNumber").toString();
 		userMail = user.get("mobilePhoneNumber").toString();
 
-		account = new MaterialAccount(this.getResources(), userName, userMail, R.drawable.photo, R.drawable.bamboo);
+		account = new MaterialAccount(this.getResources(), userName, userMail, null, R.drawable.bamboo);
+
 		this.addAccount(account);
 
 		Bundle params = new Bundle();
@@ -64,6 +68,7 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 					Intent intent = new Intent(MyNavigationDrawer.this, MainActivity.class);
 					startActivity(intent);
+					finish();
 				} else {
 					finish();
 				}

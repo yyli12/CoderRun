@@ -15,6 +15,6 @@ public class Util {
 	}
 
 	public static boolean validPassword(String password) {
-		return password.length() > 6;
+		return password.length() >= 6;
 	}
 }
