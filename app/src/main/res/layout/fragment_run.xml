@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				xmlns:fancy="http://schemas.android.com/apk/res-auto"
+				tools:context="cn.edu.fudan.cs12.coderrun.fragment.RunFragment">
+
+	<!-- TODO: Update blank fragment layout -->
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="bottom|center_horizontal">
+
+		<mehdi.sakout.fancybuttons.FancyButton
+			android:id="@+id/button_run"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+
+			fancy:fb_borderColor="#FFFFFF"
+			fancy:fb_borderWidth="1dp"
+			fancy:fb_defaultColor="@color/app_green"
+			fancy:fb_focusColor="@color/app_green_dark"
+			fancy:fb_radius="40dp"
+			fancy:fb_text="@string/button_run"
+			fancy:fb_textColor="#FFFFFF"
+			fancy:fb_fontIconResource="&#xf061;"
+			fancy:fb_iconPosition="left"
+			android:layout_gravity="center_horizontal|bottom"
+			android:layout_marginBottom="100dp"
+			android:layout_marginStart="70dp"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentStart="true"/>
+
+		<mehdi.sakout.fancybuttons.FancyButton
+			android:id="@+id/button_pause"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			fancy:fb_borderColor="#FFFFFF"
+			fancy:fb_borderWidth="1dp"
+			fancy:fb_defaultColor="@color/app_yellow"
+			fancy:fb_focusColor="@color/app_yellow_dark"
+			fancy:fb_radius="40dp"
+			fancy:fb_text="@string/button_pause"
+			fancy:fb_textColor="#FFFFFF"
+			fancy:fb_fontIconResource="&#xf04c;"
+			fancy:fb_iconPosition="left"
+			android:layout_gravity="center_horizontal|bottom"
+			android:layout_marginEnd="70dp"
+			android:layout_alignTop="@+id/button_run"
+			android:layout_alignParentEnd="true"/>
+
+	</RelativeLayout>
+
+	<ImageView
+		android:layout_width="200dp"
+		android:layout_height="200dp"
+		android:id="@+id/image_run"
+		android:layout_gravity="center_horizontal|top"
+		android:src="@mipmap/ic_logo"
+		android:layout_marginTop="60dp"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"/>
+
+</FrameLayout>

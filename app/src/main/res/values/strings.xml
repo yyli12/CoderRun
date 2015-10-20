@@ -15,6 +15,9 @@
 	<string name="dialog_button_reset_init_password_submit">设置</string>
 	<string name="dialog_button_reset_init_password_cancel">取消</string>
 
+	<string name="button_run">开跑！</string>
+	<string name="button_pause">暂停！</string>
+
 
 
 	<string name="title_sms">输入手机验证码</string>

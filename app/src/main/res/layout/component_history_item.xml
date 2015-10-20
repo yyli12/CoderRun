@@ -34,6 +34,7 @@
 					android:textSize="20sp" />
 
 				<RatingBar
+					style="@style/Base.Widget.AppCompat.RatingBar"
 					android:layout_width="wrap_content"
 					android:layout_height="fill_parent"
 					android:id="@+id/history_item_ratingBar"
@@ -91,7 +92,7 @@
 					android:layout_height="wrap_content"
 					android:text="7.3"
 					android:id="@+id/history_item_speed"
-					android:textColor="@color/primary_dark"
+					android:textColor="@color/app_blue"
 					android:textSize="30sp"
 					android:layout_gravity="center"
 					android:layout_centerVertical="true"
@@ -102,7 +103,7 @@
 					android:layout_height="wrap_content"
 					android:text="min/km"
 					android:id="@+id/history_item_unit"
-					android:textColor="@color/primary_dark"
+					android:textColor="@color/app_blue"
 					android:textSize="15sp"
 					android:layout_below="@+id/history_item_speed"
 					android:layout_toEndOf="@+id/history_item_speed"/>

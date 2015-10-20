@@ -26,6 +26,7 @@ android {
 
 repositories {
 	maven { url "https://jitpack.io" }
+	jcenter()
 }
 
 dependencies {
@@ -49,4 +50,6 @@ dependencies {
 	}
 
 	compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
+	compile 'com.github.medyo:fancybuttons:1.5@aar'
 }

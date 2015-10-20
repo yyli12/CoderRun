@@ -18,6 +18,7 @@ import cn.edu.fudan.cs12.coderrun.R;
 import cn.edu.fudan.cs12.coderrun.action.UserAction;
 import cn.edu.fudan.cs12.coderrun.entity.User;
 import cn.edu.fudan.cs12.coderrun.fragment.HistoryItemFragment;
+import cn.edu.fudan.cs12.coderrun.fragment.RunFragment;
 import cn.edu.fudan.cs12.coderrun.fragment.UserFragment;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
@@ -53,9 +54,9 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		params.putString("fields", "cover");
 
 		// create sections
-		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new UserFragment()).setSectionColor(Color.parseColor("#9c27b0")));
-		this.addSection(newSection("历史记录", R.drawable.ic_history, new HistoryItemFragment()).setSectionColor(Color.parseColor("#9c27b0")));
-		this.addSection(newSection("我的账号", R.drawable.ic_profile, new UserFragment()).setSectionColor(Color.parseColor("#9c27b0")));
+		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new RunFragment()).setSectionColor(getResources().getColor(R.color.app_green)));
+		this.addSection(newSection("历史记录", R.drawable.ic_history, new HistoryItemFragment()).setSectionColor(getResources().getColor(R.color.app_blue)));
+		this.addSection(newSection("我的账号", R.drawable.ic_profile, new UserFragment()).setSectionColor(getResources().getColor(R.color.primary)));
 
 		// create bottom section
 		this.addBottomSection(newSection("退出账号", R.drawable.ic_logout, new MaterialSectionListener() {
