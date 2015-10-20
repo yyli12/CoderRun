@@ -1,22 +1,33 @@
-package cn.edu.fudan.cs12.coderrun;
+package cn.edu.fudan.cs12.coderrun.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.edu.fudan.cs12.coderrun.R;
+import cn.edu.fudan.cs12.coderrun.entity.User;
+
+public class FunctionActivity extends AppCompatActivity {
+	@Bind(R.id.action_button_logout)
+	Button mLogoutButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_function);
+		ButterKnife.bind(this);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
+		getMenuInflater().inflate(R.menu.menu_function, menu);
 		return true;
 	}
 
@@ -33,5 +44,13 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@OnClick(R.id.action_button_logout)
+	void logout() {
+		User.logOut();
+		Intent mainIntent = new Intent(FunctionActivity.this, MainActivity.class);
+		startActivity(mainIntent);
+		FunctionActivity.this.finish();
 	}
 }
