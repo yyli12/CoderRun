@@ -17,6 +17,24 @@
 
 	<string name="button_run">开跑！</string>
 	<string name="button_pause">暂停！</string>
+	<string name="button_stop">停止！</string>
+	<string name="notification_subtitle">Running!</string>
+	<string name="started">Running!</string>
+	<string name="stopped">Wait a minute!</string>
+	<string name="steps">steps</string>
+	<string name="kilometers">kilometers</string>
+	<string name="miles">miles</string>
+	<string name="steps_per_minute">steps / minute</string>
+	<string name="kilometers_per_hour">kilometers / hour</string>
+	<string name="miles_per_hour">miles / hour</string>
+	<string name="calories_burned">calories burned</string>
+	<string name="centimeters">centimeters</string>
+	<string name="inches">inches</string>
+	<string name="kilograms">kilograms</string>
+	<string name="pounds">pounds</string>
+	<string name="body_weight_setting_title">Enter your body weight</string>
+	<string name="step_length_setting_title">Enter your step length</string>
+
 
 
 

@@ -29,5 +29,9 @@ public class Config {
 	// Error code
 	public final static int DEFAULT_FAIL = -1;             // fail for other reason
 
+	public final static int RUN_SERVICE_START = 1;
+	public final static int RUN_SERVICE_PAUSE = 2;
+	public final static int RUN_SERVICE_STOP = 3;
+
 
 }

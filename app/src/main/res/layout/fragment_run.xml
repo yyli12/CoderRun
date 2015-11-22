@@ -7,10 +7,65 @@
 
 	<!-- TODO: Update blank fragment layout -->
 
+	<ImageView
+		android:layout_width="200dp"
+		android:layout_height="200dp"
+		android:id="@+id/image_run"
+		android:layout_gravity="center_horizontal|top"
+		android:src="@mipmap/ic_logo"
+		android:layout_marginTop="60dp"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"/>
+
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_gravity="bottom|center_horizontal">
+		android:id="@+id/button_set_pause">
+
+		<mehdi.sakout.fancybuttons.FancyButton
+			android:id="@+id/button_pause"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			fancy:fb_borderColor="#FFFFFF"
+			fancy:fb_borderWidth="1dp"
+			fancy:fb_defaultColor="@color/app_yellow"
+			fancy:fb_focusColor="@color/app_yellow_dark"
+			fancy:fb_radius="40dp"
+			fancy:fb_text="@string/button_pause"
+			fancy:fb_textColor="#FFFFFF"
+			fancy:fb_fontIconResource="&#xf04c;"
+			fancy:fb_iconPosition="left"
+			android:layout_gravity="center_horizontal|bottom"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="100dp"
+			android:layout_marginLeft="60dp"
+			android:layout_alignParentRight="false"/>
+
+		<mehdi.sakout.fancybuttons.FancyButton
+			android:id="@+id/button_stop"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			fancy:fb_borderColor="#FFFFFF"
+			fancy:fb_borderWidth="1dp"
+			fancy:fb_defaultColor="#ff2700"
+			fancy:fb_focusColor="#d62600"
+			fancy:fb_radius="40dp"
+			fancy:fb_text="@string/button_stop"
+			fancy:fb_textColor="#FFFFFF"
+			fancy:fb_fontIconResource="&#xf04c;"
+			fancy:fb_iconPosition="left"
+			android:layout_gravity="center_horizontal|bottom"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="100dp"
+			android:layout_marginRight="60dp"
+			android:layout_alignParentRight="true"/>
+
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/button_set_run">
 
 		<mehdi.sakout.fancybuttons.FancyButton
 			android:id="@+id/button_run"
@@ -28,38 +83,86 @@
 			fancy:fb_iconPosition="left"
 			android:layout_gravity="center_horizontal|bottom"
 			android:layout_marginBottom="100dp"
-			android:layout_marginStart="70dp"
 			android:layout_alignParentBottom="true"
-			android:layout_alignParentStart="true"/>
-
-		<mehdi.sakout.fancybuttons.FancyButton
-			android:id="@+id/button_pause"
-			android:layout_width="80dp"
-			android:layout_height="80dp"
-			fancy:fb_borderColor="#FFFFFF"
-			fancy:fb_borderWidth="1dp"
-			fancy:fb_defaultColor="@color/app_yellow"
-			fancy:fb_focusColor="@color/app_yellow_dark"
-			fancy:fb_radius="40dp"
-			fancy:fb_text="@string/button_pause"
-			fancy:fb_textColor="#FFFFFF"
-			fancy:fb_fontIconResource="&#xf04c;"
-			fancy:fb_iconPosition="left"
-			android:layout_gravity="center_horizontal|bottom"
-			android:layout_marginEnd="70dp"
-			android:layout_alignTop="@+id/button_run"
-			android:layout_alignParentEnd="true"/>
+			android:layout_centerHorizontal="true"/>
 
 	</RelativeLayout>
 
-	<ImageView
-		android:layout_width="200dp"
-		android:layout_height="200dp"
-		android:id="@+id/image_run"
-		android:layout_gravity="center_horizontal|top"
-		android:src="@mipmap/ic_logo"
-		android:layout_marginTop="60dp"
-		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"/>
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|center_horizontal"
+		android:layout_marginBottom="250dp"
+		android:id="@+id/set_data"
+		android:layout_above="@+id/button_run"
+		android:layout_centerHorizontal="true">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:textColor="@color/app_green_dark"
+			android:id="@+id/distance_value"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentStart="true"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/distance_units"
+			android:textColor="@color/app_green_dark"
+			android:layout_alignParentTop="true"
+			android:layout_toEndOf="@+id/distance_value"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/speed_value"
+			android:textColor="@color/app_green_dark"
+			android:layout_below="@+id/distance_value"
+			android:layout_alignParentStart="true"
+			android:layout_marginTop="28dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/speed_units"
+			android:textColor="@color/app_green_dark"
+
+			android:layout_alignTop="@+id/speed_value"
+			android:layout_toEndOf="@+id/speed_value"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/pace_value"
+			android:textColor="@color/app_green_dark"
+			android:layout_below="@+id/speed_value"
+			android:layout_alignParentStart="true"
+			android:layout_marginTop="24dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/step_value"
+			android:textColor="@color/app_green_dark"
+			android:layout_below="@+id/pace_value"
+			android:layout_alignParentStart="true"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="New Text"
+			android:id="@+id/calories_value"
+			android:textColor="@color/app_green_dark"
+			android:layout_below="@+id/step_value"
+			android:layout_alignParentStart="true"/>
+
+	</RelativeLayout>
 
 </FrameLayout>
