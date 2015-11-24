@@ -27,6 +27,8 @@ public class User extends AVUser {
 	public final static String GENDER_STRING = "gender";
 	public final static String NICKNAME_STRING = "nickname";
 	public final static String INTRO_STRING = "introduction";
+	public final static String AREA_STRING = "area";
+	public final static String SLOGAN_STRING = "slogan";
 
 	public User() {
 	}
@@ -70,6 +72,10 @@ public class User extends AVUser {
 		return getString(NICKNAME_STRING);
 	}
 
+	public String getArea() { return getString(AREA_STRING); }
+
+	public String getSlogan() { return getString(SLOGAN_STRING); }
+
 	public void setNickName(String nickName) {
 		put(NICKNAME_STRING, nickName);
 	}
@@ -82,7 +88,7 @@ public class User extends AVUser {
 		put(INTRO_STRING, intro);
 	}
 
-	public boolean isPasswordSet() { return getString("initPassword").equals("-1"); }
+	public boolean isPasswordSet() { return getString("initPassword") == null || getString("initPassword").equals("-1"); }
 
 	public String getInitPassword() {
 		return getString("initPassword");

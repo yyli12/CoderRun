@@ -24,9 +24,29 @@
 		android:id="@+id/user_mobile"
 		android:layout_gravity="center_horizontal"
 		android:layout_marginTop="25dp"
-		android:textSize="25dp"
-		android:textColor="@color/gray_dark"
+		android:textSize="25sp"
+		android:textColor="@color/primary"
 		android:layout_below="@+id/user_avatar"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="上海市 浦东新区"
+		android:id="@+id/user_area"
+		android:textColor="@color/gray"
+		android:textSize="20sp"
+		android:layout_below="@+id/user_mobile"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:layout_width="300sp"
+		android:layout_height="wrap_content"
+		android:text="跑跑跑跑跑你妹啊跑跑跑跑跑你妹啊跑跑跑跑跑你妹啊"
+		android:id="@+id/user_slogan"
+		android:textColor="@color/gray"
+		android:textSize="20sp"
+		android:layout_centerVertical="true"
 		android:layout_centerHorizontal="true"/>
 
 	<LinearLayout
@@ -66,5 +86,29 @@
 			android:layout_centerHorizontal="true"
 			/>
 	</LinearLayout>
+
+	<ImageView
+		android:layout_width="15sp"
+		android:layout_height="15sp"
+		android:id="@+id/imageView3"
+		android:src="@drawable/ic_edit"
+		android:layout_above="@+id/user_mobile"
+		android:layout_alignEnd="@+id/user_avatar"/>
+
+	<ImageView
+		android:layout_width="15sp"
+		android:layout_height="15sp"
+		android:id="@+id/imageView4"
+		android:src="@drawable/ic_edit"
+		android:layout_alignBottom="@+id/user_slogan"
+		android:layout_alignEnd="@+id/user_slogan"/>
+
+	<ImageView
+		android:layout_width="15sp"
+		android:layout_height="15sp"
+		android:id="@+id/imageView5"
+		android:src="@drawable/ic_edit"
+		android:layout_alignBottom="@+id/user_area"
+		android:layout_toEndOf="@+id/user_area"/>
 
 </RelativeLayout>
