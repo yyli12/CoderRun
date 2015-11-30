@@ -17,6 +17,7 @@
 
 	<string name="button_run">开跑！</string>
 	<string name="button_pause">暂停！</string>
+	<string name="button_resume">继续！</string>
 	<string name="button_stop">停止！</string>
 	<string name="notification_subtitle">Running!</string>
 	<string name="started">Running!</string>
