@@ -23,6 +23,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;

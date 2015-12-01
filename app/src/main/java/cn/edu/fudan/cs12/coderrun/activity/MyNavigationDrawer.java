@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -18,6 +19,7 @@ import cn.edu.fudan.cs12.coderrun.R;
 import cn.edu.fudan.cs12.coderrun.action.UserAction;
 import cn.edu.fudan.cs12.coderrun.entity.User;
 import cn.edu.fudan.cs12.coderrun.fragment.HistoryItemFragment;
+import cn.edu.fudan.cs12.coderrun.fragment.MapFragment;
 import cn.edu.fudan.cs12.coderrun.fragment.RunFragment;
 import cn.edu.fudan.cs12.coderrun.fragment.UserFragment;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
@@ -49,12 +51,12 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		account = new MaterialAccount(this.getResources(), userName, userMail, null, R.drawable.bamboo);
 
 		this.addAccount(account);
-
+		SDKInitializer.initialize(getApplicationContext());
 		Bundle params = new Bundle();
 		params.putString("fields", "cover");
 
 		// create sections
-		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new RunFragment()).setSectionColor(getResources().getColor(R.color.app_green)));
+		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new MapFragment()).setSectionColor(getResources().getColor(R.color.app_green)));
 		this.addSection(newSection("历史记录", R.drawable.ic_history, new HistoryItemFragment()).setSectionColor(getResources().getColor(R.color.app_blue)));
 		this.addSection(newSection("我的账号", R.drawable.ic_profile, new UserFragment()).setSectionColor(getResources().getColor(R.color.primary)));
 

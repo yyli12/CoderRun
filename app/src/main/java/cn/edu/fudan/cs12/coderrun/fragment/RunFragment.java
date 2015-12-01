@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.baidu.mapapi.map.MapView;
 import com.bumptech.glide.Glide;
 
 import cn.edu.fudan.cs12.coderrun.Config;
@@ -39,6 +40,7 @@ public class RunFragment extends Fragment {
 	ImageView mRunImage;
 	FancyButton mRunButton;
 	FancyButton mPauseButton;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,6 @@ public class RunFragment extends Fragment {
 		mRunButton = (FancyButton) v.findViewById(R.id.button_run);
 		mPauseButton = (FancyButton) v.findViewById(R.id.button_pause);
 		mRunImage = (ImageView) v.findViewById(R.id.image_run);
-
 		mRunButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
