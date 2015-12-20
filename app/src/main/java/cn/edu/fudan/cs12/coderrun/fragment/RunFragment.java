@@ -28,9 +28,14 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 import com.bumptech.glide.Glide;
+import com.lantouzi.wheelview.WheelView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -172,6 +177,11 @@ public class RunFragment extends Fragment {
 				ch.stop();
 				state = State.STOP;
 				displayCorrespondingView();
+				if (totalDist > 0 && avgSpeed > 0) {
+					stopRun();
+				} else {
+					Toast.makeText(getActivity(), "别偷懒", Toast.LENGTH_SHORT).show();
+				}
 				Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
 			}
 		});
@@ -219,6 +229,51 @@ public class RunFragment extends Fragment {
 		} else {
 			Toast.makeText(getActivity(), "没有获取地理位置的权限", Toast.LENGTH_SHORT).show();
 		}
+	}
+
+	private void stopRun() {
+		final View content = getActivity().getLayoutInflater().inflate(R.layout.component_stop_run, null);
+		((TextView) content.findViewById(R.id.final_speed)).setText("速度：" + avgSpeed + " min/km");
+		((TextView) content.findViewById(R.id.final_distance)).setText("距离：" + totalDist + " km");
+		final WheelView score = (WheelView) content.findViewById(R.id.score_picker);
+		score.setItems(Arrays.asList("1", "2", "3", "4", "5"));
+
+		MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+				.title(R.string.dialog_title_record_run)
+				.contentColorRes(R.color.gray_dark)
+				.customView(content, false)
+				.positiveText(R.string.dialog_button_submit_run)
+				.positiveColorRes(R.color.app_green)
+				.onPositive(new MaterialDialog.SingleButtonCallback() {
+					public void onClick(MaterialDialog materialDialog, DialogAction dialogAction) {
+						int s = score.getSelectedPosition() + 1;
+						uploadRun(System.currentTimeMillis() / 1000, totalDist, s, (long) (avgSpeed * totalDist), null);
+					}
+				})
+				.negativeText(R.string.dialog_button_cancel_run)
+				.negativeColorRes(R.color.gray_light)
+				.show();
+	}
+
+	public void uploadRun(long fin_time, double dist, int score, long run_time, String loc) {
+		if (loc == null) loc = "-";
+		AVObject history = new AVObject("history_run");
+		history.put("finish_time", fin_time);
+		history.put("running_distance", dist);
+		history.put("score", score);
+		history.put("running_time", run_time);
+		history.put("location", loc);
+		history.put("user", User.getCurrentUser());
+		history.saveInBackground(new SaveCallback() {
+			@Override
+			public void done(AVException e) {
+				if (e == null) {
+					Toast.makeText(getActivity(), "记录成功", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getActivity(), "记录失败", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
 	}
 
 	private void displayCorrespondingView() {
