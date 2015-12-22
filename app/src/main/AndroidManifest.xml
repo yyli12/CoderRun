@@ -3,6 +3,7 @@
     package="cn.edu.fudan.cs12.coderrun" >
 
     <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!--
  To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect

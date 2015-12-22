@@ -12,11 +12,15 @@
 	<string name="title_init_password">初始密码：</string>
 	<string name="button_reset_init_password">设置密码</string>
 	<string name="dialog_title_reset_init_password">设置密码</string>
+	<string name="dialog_title_record_run">记录跑步</string>
 	<string name="dialog_button_reset_init_password_submit">设置</string>
 	<string name="dialog_button_reset_init_password_cancel">取消</string>
+	<string name="dialog_button_submit_run">记录</string>
+	<string name="dialog_button_cancel_run">取消</string>
 
 	<string name="button_run">开跑！</string>
 	<string name="button_pause">暂停！</string>
+	<string name="button_resume">继续！</string>
 	<string name="button_stop">停止！</string>
 	<string name="notification_subtitle">Running!</string>
 	<string name="started">Running!</string>
