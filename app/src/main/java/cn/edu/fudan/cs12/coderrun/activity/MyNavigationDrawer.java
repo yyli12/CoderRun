@@ -56,7 +56,7 @@ public class MyNavigationDrawer extends MaterialNavigationDrawer {
 		params.putString("fields", "cover");
 
 		// create sections
-		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new MapFragment()).setSectionColor(getResources().getColor(R.color.app_green)));
+		this.addSection(newSection("Coder, Run!", R.drawable.ic_run, new RunFragment()).setSectionColor(getResources().getColor(R.color.app_green)));
 		this.addSection(newSection("历史记录", R.drawable.ic_history, new HistoryItemFragment()).setSectionColor(getResources().getColor(R.color.app_blue)));
 		this.addSection(newSection("我的账号", R.drawable.ic_profile, new UserFragment()).setSectionColor(getResources().getColor(R.color.primary)));
 

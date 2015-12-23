@@ -83,6 +83,7 @@ public class MapFragment extends Fragment {
             // map view 销毁后不在处理新接收的位置
             if (location == null || mMapView == null)
                 return;
+            //获取当前位置信息
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
                             // 此处设置开发者获取到的方向信息，顺时针0-360
@@ -90,6 +91,7 @@ public class MapFragment extends Fragment {
                     .longitude(location.getLongitude()).build();
             baiduMap.setMyLocationData(locData);    //设置定位数据
             LatLng point = new LatLng(location.getLatitude(), location.getLongitude());
+            //如果首次定位或者要求定位，则地图拉到当前位置
             if (isFirstLoc||isRequst) {
                 isFirstLoc = false;
                 isRequst = false;
@@ -98,6 +100,7 @@ public class MapFragment extends Fragment {
                 // MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                 baiduMap.animateMapStatus(u);
             }
+            //若显示要画地图，则
             if(isTrack){
                 points.add(point);
                 if (points.size() == 5) {
@@ -106,7 +109,7 @@ public class MapFragment extends Fragment {
                     drawStart(points);
                 } else if (points.size() > 7) {
                     points_tem = points.subList(points.size() - 4, points.size());
-                    OverlayOptions options = new PolylineOptions().color(0xAAFF0000).width(6)
+                    OverlayOptions options = new PolylineOptions().color(0xAAFF0000).width(15)
                             .points(points_tem);
                     baiduMap.addOverlay(options);
                 }
@@ -155,7 +158,8 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         user= UserAction.getCurrentUser();
-        View v= inflater.inflate(R.layout.fragment_map, container, false);
+        View v = inflater.inflate(R.layout.fragment_map, container,false);
+        //View v= inflater.inflate(R.layout.fragment_map, container, false);
         mMapView = (MapView) v.findViewById(R.id.bmapView);
         baiduMap = mMapView.getMap();
         //手动定位
@@ -175,11 +179,13 @@ public class MapFragment extends Fragment {
         Button but_stop = (Button) v.findViewById(R.id.but_stop);
 
         //绘制
-        handler.postDelayed(new MyRunable(), 3000);
+        handler.postDelayed(new MyRunable(), 1000);
         but_start.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                points.clear();
+                points_tem.clear();
                 isStopLocClient = false;
                 isTrack = true;
                 if (!locationClient.isStarted()) {
@@ -193,12 +199,12 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                isStopLocClient = true;
+                //isStopLocClient = true;
                 if (locationClient.isStarted()) {
                     // 绘制终点
                     isTrack = false;
                     drawEnd(points);
-                    locationClient.stop();
+                    //locationClient.stop();
                 }
 
             }
@@ -219,7 +225,7 @@ public class MapFragment extends Fragment {
         option.setOpenGps(true); // 打开GPS
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);// 设置定位模式
         option.setCoorType("bd09ll"); // 返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(2000); // 设置发起定位请求的间隔时间为2000ms
+        option.setScanSpan(1000); // 设置发起定位请求的间隔时间为2000ms
         option.setIsNeedAddress(true); // 返回的定位结果包含地址信息
         option.setNeedDeviceDirect(true); // 返回的定位结果包含手机机头的方向
         option.setPriority(LocationClientOption.GpsFirst);
@@ -254,7 +260,7 @@ public class MapFragment extends Fragment {
                 locationClient.start();
             }
             if (!isStopLocClient) {
-                handler.postDelayed(this, 3000);
+                handler.postDelayed(this, 1000);
             }
 
         }
