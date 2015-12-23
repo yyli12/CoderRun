@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.edu.fudan.cs12.coderrun.fragment.MapFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+    <Button
+        android:id="@+id/but_start"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="start"/>
+
+    <ImageButton
+        android:id="@+id/request"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom|left"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:background="@color/md_divider_white"
+        android:src="@drawable/custom_loc"  />
+
+    <Button
+        android:id="@+id/but_stop"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="stop"
+        android:layout_gravity="center_horizontal|top" />
+
+</FrameLayout>

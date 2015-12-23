@@ -22,6 +22,8 @@
 	<string name="button_pause">暂停！</string>
 	<string name="button_resume">继续！</string>
 	<string name="button_stop">停止！</string>
+	<string name="button_map">地图！</string>
+	<string name="button_mainScreen">主界面</string>
 	<string name="notification_subtitle">Running!</string>
 	<string name="started">Running!</string>
 	<string name="stopped">Wait a minute!</string>
