@@ -1,12 +1,30 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				xmlns:tools="http://schemas.android.com/tools"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				xmlns:fancy="http://schemas.android.com/apk/res-auto"
-				tools:context="cn.edu.fudan.cs12.coderrun.fragment.RunFragment">
+			 xmlns:tools="http://schemas.android.com/tools"
+			 android:layout_width="match_parent"
+			 android:layout_height="match_parent"
+			 xmlns:fancy="http://schemas.android.com/apk/res-auto"
+			 tools:context="cn.edu.fudan.cs12.coderrun.fragment.RunFragment">
 
-	<!-- TODO: Update blank fragment layout -->
+	<!-- TODO: Map Screen -->
 
+	<com.baidu.mapapi.map.MapView
+		android:id="@+id/bmapView"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:clickable="true"
+		android:visibility="invisible"/>
+	<ImageButton
+		android:id="@+id/request"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:scaleType="fitXY"
+		android:layout_gravity="bottom|left"
+		android:layout_alignParentLeft="true"
+		android:layout_marginLeft="10dp"
+		android:background="@color/md_divider_white"
+		android:src="@drawable/custom_loc"
+		android:visibility="invisible"/>
+	<!-- TODO: Run Screen -->
 	<ImageView
 		android:layout_width="200dp"
 		android:layout_height="200dp"
@@ -18,151 +36,198 @@
 		android:layout_centerHorizontal="true"/>
 
 	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:id="@+id/button_set_pause">
-
-		<mehdi.sakout.fancybuttons.FancyButton
-			android:id="@+id/button_pause"
-			android:layout_width="80dp"
-			android:layout_height="80dp"
-			fancy:fb_borderColor="#FFFFFF"
-			fancy:fb_borderWidth="1dp"
-			fancy:fb_defaultColor="@color/app_yellow"
-			fancy:fb_focusColor="@color/app_yellow_dark"
-			fancy:fb_radius="40dp"
-			fancy:fb_text="@string/button_pause"
-			fancy:fb_textColor="#FFFFFF"
-			fancy:fb_fontIconResource="&#xf04c;"
-			fancy:fb_iconPosition="left"
-			android:layout_gravity="center_horizontal|bottom"
-			android:layout_alignParentBottom="true"
-			android:layout_marginBottom="100dp"
-			android:layout_marginLeft="60dp"
-			android:layout_alignParentRight="false"/>
-
-		<mehdi.sakout.fancybuttons.FancyButton
-			android:id="@+id/button_stop"
-			android:layout_width="80dp"
-			android:layout_height="80dp"
-			fancy:fb_borderColor="#FFFFFF"
-			fancy:fb_borderWidth="1dp"
-			fancy:fb_defaultColor="#ff2700"
-			fancy:fb_focusColor="#d62600"
-			fancy:fb_radius="40dp"
-			fancy:fb_text="@string/button_stop"
-			fancy:fb_textColor="#FFFFFF"
-			fancy:fb_fontIconResource="&#xf04c;"
-			fancy:fb_iconPosition="left"
-			android:layout_gravity="center_horizontal|bottom"
-			android:layout_alignParentBottom="true"
-			android:layout_marginBottom="100dp"
-			android:layout_marginRight="60dp"
-			android:layout_alignParentRight="true"/>
-
-	</RelativeLayout>
-
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:id="@+id/button_set_run">
-
-		<mehdi.sakout.fancybuttons.FancyButton
-			android:id="@+id/button_run"
-			android:layout_width="80dp"
-			android:layout_height="80dp"
-
-			fancy:fb_borderColor="#FFFFFF"
-			fancy:fb_borderWidth="1dp"
-			fancy:fb_defaultColor="@color/app_green"
-			fancy:fb_focusColor="@color/app_green_dark"
-			fancy:fb_radius="40dp"
-			fancy:fb_text="@string/button_run"
-			fancy:fb_textColor="#FFFFFF"
-			fancy:fb_fontIconResource="&#xf061;"
-			fancy:fb_iconPosition="left"
-			android:layout_gravity="center_horizontal|bottom"
-			android:layout_marginBottom="100dp"
-			android:layout_alignParentBottom="true"
-			android:layout_centerHorizontal="true"/>
-
-	</RelativeLayout>
-
-	<RelativeLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="bottom|center_horizontal"
-		android:layout_marginBottom="250dp"
+		android:layout_gravity="center"
 		android:id="@+id/set_data"
-		android:layout_above="@+id/button_run"
-		android:layout_centerHorizontal="true">
+		android:layout_centerVertical="true"
+		android:layout_alignStart="@+id/button_run"
+		android:layout_marginBottom="80dp">
 
-		<TextView
+		<Chronometer
+			android:text="计时器"
+			android:id="@+id/chronometer1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
-			android:textColor="@color/app_green_dark"
-			android:id="@+id/distance_value"
+			android:background="#7fffffff"
+			android:textColor="@color/app_dark"
+			android:textSize="20sp"
 			android:layout_alignParentTop="true"
 			android:layout_alignParentStart="true"/>
-
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
+			android:text="距离："
+			android:background="#7fffffff"
 			android:id="@+id/distance_units"
-			android:textColor="@color/app_green_dark"
-			android:layout_alignParentTop="true"
-			android:layout_toEndOf="@+id/distance_value"/>
-
+			android:textSize="20sp"
+			android:textColor="@color/app_dark"
+			android:layout_below="@+id/chronometer1"
+			android:layout_marginTop="28dp"/>
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
-			android:id="@+id/speed_value"
-			android:textColor="@color/app_green_dark"
-			android:layout_below="@+id/distance_value"
-			android:layout_alignParentStart="true"
+			android:text="0.00 km"
+			android:background="#7fffffff"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			android:textColor="@color/app_dark"
+			android:id="@+id/distance_value"
+			android:layout_below="@+id/chronometer1"
+			android:layout_toRightOf="@+id/distance_units"
 			android:layout_marginTop="28dp"/>
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
+			android:text="速度："
+			android:background="#7fffffff"
+			android:textSize="20sp"
 			android:id="@+id/speed_units"
-			android:textColor="@color/app_green_dark"
-
-			android:layout_alignTop="@+id/speed_value"
-			android:layout_toEndOf="@+id/speed_value"/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="New Text"
-			android:id="@+id/pace_value"
-			android:textColor="@color/app_green_dark"
-			android:layout_below="@+id/speed_value"
-			android:layout_alignParentStart="true"
-			android:layout_marginTop="24dp"/>
+			android:textColor="@color/app_dark"
+			android:layout_below="@+id/distance_units"
+			android:layout_marginTop="28dp"/>
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
-			android:id="@+id/step_value"
-			android:textColor="@color/app_green_dark"
-			android:layout_below="@+id/pace_value"
-			android:layout_alignParentStart="true"/>
-
+			android:text="0.0 min/km"
+			android:background="#7fffffff"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			android:id="@+id/speed_value"
+			android:textColor="@color/app_dark"
+			android:layout_below="@+id/distance_units"
+			android:layout_toEndOf="@+id/speed_units"
+			android:layout_toRightOf="@+id/speed_units"
+			android:layout_marginTop="28dp"/>
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="New Text"
-			android:id="@+id/calories_value"
-			android:textColor="@color/app_green_dark"
-			android:layout_below="@+id/step_value"
-			android:layout_alignParentStart="true"/>
+			android:text="卡路里：0 kcal"
+			android:background="#7fffffff"
+			android:textSize="20sp"
+			android:id="@+id/consumeEnergy_units"
+			android:textColor="@color/app_dark"
+			android:layout_below="@+id/speed_units"
+			android:layout_marginTop="28dp"/>
+
 
 	</RelativeLayout>
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_playMusic"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="@color/app_green"
+		fancy:fb_focusColor="@color/app_green_dark"
+		fancy:fb_radius="40dp"
+		fancy:fb_text=""
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf001;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="right|bottom"
+		android:layout_marginBottom="3dp"
+		android:layout_marginRight="3dp"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="false"/>
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_run"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="@color/app_green"
+		fancy:fb_focusColor="@color/app_green_dark"
+		fancy:fb_radius="40dp"
+		fancy:fb_text="@string/button_run"
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf061;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_marginBottom="100dp"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"/>
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_pause"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="@color/app_yellow"
+		fancy:fb_focusColor="@color/app_yellow_dark"
+		fancy:fb_radius="40dp"
+		fancy:fb_text="@string/button_pause"
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf04c;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="100dp"
+		android:layout_alignParentRight="false"
+		android:layout_marginRight="60dp"/>
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_resume"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="@color/app_green"
+		fancy:fb_focusColor="@color/app_green_dark"
+		fancy:fb_radius="40dp"
+		fancy:fb_text="@string/button_resume"
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf061;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="100dp"
+		android:layout_alignParentRight="false"
+		android:layout_marginRight="60dp"/>
+
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_stop"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="#ff2700"
+		fancy:fb_focusColor="#d62600"
+		fancy:fb_radius="40dp"
+		fancy:fb_text="@string/button_stop"
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf04c;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="bottom|center_horizontal"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="100dp"
+		android:layout_alignParentRight="true"
+		android:layout_marginLeft="60dp" />
+
+	<mehdi.sakout.fancybuttons.FancyButton
+		android:id="@+id/button_map"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		fancy:fb_borderColor="#FFFFFF"
+		fancy:fb_borderWidth="1dp"
+		fancy:fb_defaultColor="#00d4ff"
+		fancy:fb_focusColor="#0092d6"
+		fancy:fb_radius="40dp"
+		fancy:fb_text="@string/button_map"
+		fancy:fb_textColor="#FFFFFF"
+		fancy:fb_fontIconResource="&#xf041;"
+		fancy:fb_iconPosition="left"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="20dp"
+		android:layout_alignParentRight="true" />
 
 </FrameLayout>

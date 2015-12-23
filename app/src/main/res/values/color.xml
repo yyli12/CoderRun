@@ -8,6 +8,7 @@
 	<color name="app_blue_dark">#334d80</color>
 	<color name="app_green">#339933</color>
 	<color name="app_green_dark">#317431</color>
+	<color name="app_dark">#000000</color>
 
 	<color name="gray_dark">#444</color>
 	<color name="gray">#666</color>
